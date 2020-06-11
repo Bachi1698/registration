@@ -6,7 +6,13 @@ from django.contrib.auth import authenticate,login,logout
 
 # Create your views here.
 def home(request):
-    message = "",
+    
+    datas = {
+
+    }
+    return render(request,'pages/index.html',datas)
+def login(request):
+message = "",
     us = authenticate(username=name, password=passe)
     if us.is_active:
         login(request,us)
@@ -14,12 +20,7 @@ def home(request):
     else:
         message = "identifiant incorrecte"
     datas = {
-
-    }
-    return render(request,'pages/index.html',datas)
-def login(request):
-    datas = {
-
+            "message" : message,
     }
     return render(request,'pages/login.html',datas)
 
